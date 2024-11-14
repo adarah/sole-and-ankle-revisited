@@ -20,11 +20,11 @@ const Header = () => {
         </LogoWrapper>
 
         <Nav>
-          <NavLink href="/sale">Sale</NavLink>
-          <NavLink href="/new">New&nbsp;Releases</NavLink>
-          <NavLink href="/men">Men</NavLink>
-          <NavLink href="/women">Women</NavLink>
-          <NavLink href="/kids">Kids</NavLink>
+          <NavLink href="/sale">À&nbsp;vendre</NavLink>
+          <NavLink href="/new">Nouvelle&nbsp;Versions</NavLink>
+          <NavLink href="/men">Hommes</NavLink>
+          <NavLink href="/women">Femmes</NavLink>
+          <NavLink href="/kids">Les&nbsp;Enfants</NavLink>
           <NavLink href="/collections">Collections</NavLink>
         </Nav>
 
@@ -52,6 +52,7 @@ const Header = () => {
 };
 
 const MainHeader = styled.div`
+  overflow: auto;
   display: flex;
   align-items: baseline;
   padding: 18px 32px;
