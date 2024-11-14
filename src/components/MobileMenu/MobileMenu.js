@@ -11,11 +11,12 @@ import { COLORS, WEIGHTS, QUERIES } from "../../constants";
 const MobileMenu = ({ isOpen, onDismiss }) => {
   return (
     <Overlay isOpen={isOpen} onDismiss={onDismiss}>
-      <Content>
+      <Content aria-label="Menu">
         <CloseDialogButton onClick={onDismiss}>
           <VisuallyHidden>Dismiss menu</VisuallyHidden>
           <Icon id="close" />
         </CloseDialogButton>
+        <Filler/>
         <Nav>
           <NavLink href="/sale">Sale</NavLink>
           <NavLink href="/new">New&nbsp;Releases</NavLink>
@@ -72,9 +73,11 @@ const NavLink = styled.a`
 `;
 
 const Footer = styled.footer`
+  flex: 1;
   display: flex;
-  gap: 14px;
   flex-direction: column;
+  justify-content: flex-end;
+  gap: 14px;
 `;
 
 const FooterLink = styled.a`
@@ -84,15 +87,18 @@ const FooterLink = styled.a`
   text-decoration: none;
 `;
 
-const CloseDialogButton = styled(UnstyledButton)`
-  align-self: end;
-  @media ${QUERIES.tabletOrSmaller} {
-    margin-top: -4px;
-  }
+const Filler = styled.div`
+  flex: 1;
+`;
 
-  @media ${QUERIES.phoneOrSmaller} {
-    margin-right: -16px;
-  }
+const CloseDialogButton = styled(UnstyledButton)`
+  position: absolute;
+  top: 26px;
+  right: 16px;
+
+  padding: 14px;
+  margin-top: -14px;
+  margin-right: -14px;
 `;
 
 export default MobileMenu;
