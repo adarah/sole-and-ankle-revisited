@@ -20,9 +20,10 @@ const Header = () => {
     <header>
       <SuperHeader />
       <MainHeader>
-        <Side>
+        <LogoWrapper>
           <Logo />
-        </Side>
+        </LogoWrapper>
+
         <Nav>
           <NavLink href="/sale">Sale</NavLink>
           <NavLink href="/new">New&nbsp;Releases</NavLink>
@@ -30,18 +31,21 @@ const Header = () => {
           <NavLink href="/women">Women</NavLink>
           <NavLink href="/kids">Kids</NavLink>
           <NavLink href="/collections">Collections</NavLink>
+        </Nav>
 
-          <StyledButton>
+        <MobileActions>
+          <ShoppingBagButton>
             <Icon id="shopping-bag" size={24} strokeWidth={2} />
-          </StyledButton>
+          </ShoppingBagButton>
           <StyledButton>
             <Icon id="search" size={24} strokeWidth={2} />
           </StyledButton>
           <StyledButton>
             <Icon id="menu" size={24} strokeWidth={2} />
           </StyledButton>
-        </Nav>
-        <Side />
+        </MobileActions>
+
+        <Filler />
       </MainHeader>
 
       <MobileMenu
@@ -58,6 +62,15 @@ const MainHeader = styled.div`
   padding: 18px 32px;
   height: 72px;
   border-bottom: 1px solid ${COLORS.gray[300]};
+
+  @media ${QUERIES.tabletOrSmaller} {
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  @media ${QUERIES.phoneOrSmaller} {
+    padding-inline: 16px;
+  }
 `;
 
 const Nav = styled.nav`
@@ -67,18 +80,23 @@ const Nav = styled.nav`
 
   @media ${QUERIES.tabletOrSmaller} {
     margin-right: 0;
-    gap: 32px;
     align-items: start;
   }
 `;
 
-const Side = styled.div`
+const LogoWrapper = styled.div`
   flex: 1;
 
   @media ${QUERIES.tabletOrSmaller} {
-    &:last-of-type {
-      display: none;
-    }
+    flex: revert;
+  }
+`;
+
+const Filler = styled.div`
+  flex: 1;
+
+  @media ${QUERIES.tabletOrSmaller} {
+    display: none;
   }
 `;
 
@@ -98,17 +116,30 @@ const NavLink = styled.a`
   }
 `;
 
+const MobileActions = styled.div`
+  display: none;
+  gap: 32px;
+
+  @media ${QUERIES.tabletOrSmaller} {
+    display: flex;
+  }
+
+  @media ${QUERIES.phoneOrSmaller} {
+    gap: 16px;
+  }
+`;
+
 const StyledButton = styled(UnstyledButton)`
   display: none;
-  color: ${COLORS.gray[900]}
-
-  &:first-of-type {
-    margin-left: auto;
-  }
+  color: ${COLORS.gray[900]};
 
   @media ${QUERIES.tabletOrSmaller} {
     display: revert;
   }
+`;
+
+const ShoppingBagButton = styled(StyledButton)`
+  transform: translateX(-2px);
 `;
 
 export default Header;
