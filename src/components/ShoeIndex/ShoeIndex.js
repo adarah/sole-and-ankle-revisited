@@ -15,7 +15,7 @@ const ShoeIndex = ({ sortId, setSortId }) => {
       <MainColumn>
         <Header>
           <Title>Running</Title>
-          <SelectWrapper>
+          <SortFilterWrapper>
             <Select
               label="Sort"
               value={sortId}
@@ -24,7 +24,7 @@ const ShoeIndex = ({ sortId, setSortId }) => {
               <option value="newest">Newest Releases</option>
               <option value="price">Price</option>
             </Select>
-          </SelectWrapper>
+          </SortFilterWrapper>
         </Header>
         <Spacer size={32} />
         <ShoeGrid />
@@ -50,7 +50,6 @@ const Wrapper = styled.div`
 
   @media ${QUERIES.tabletOrSmaller} {
     flex-direction: column-reverse;
-    height: min-content;
     gap: 0;
   }
 `;
@@ -84,7 +83,7 @@ const Title = styled.h2`
   font-weight: ${WEIGHTS.medium};
 `;
 
-const SelectWrapper = styled.div`
+const SortFilterWrapper = styled.div`
   @media ${QUERIES.phoneOrSmaller} {
     display: none;
   }
